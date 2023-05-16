@@ -1,4 +1,4 @@
-import SiteContext, { useSite } from "./context/SiteContext";
+import { useSite } from "./context";
 
 export default function SwitchTheme() {
 

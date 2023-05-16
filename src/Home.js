@@ -1,6 +1,6 @@
 import Header from "./Header"
 import Footer from "./Footer"
-import { useAuth } from "./context/AuthContext"
+import { useAuth } from "./context"
 
 export default function Home() {
 

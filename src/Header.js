@@ -1,6 +1,6 @@
 import SwitchLanguage from "./SwitchLanguage"
 import SwitchTheme from "./SwitchTheme"
-import { useAuth } from "./context/AuthContext"
+import { useAuth } from "./context"
 
 export default function Header() {
 
