@@ -4,17 +4,22 @@ import { useAuth } from "./context"
 
 export default function Header() {
 
-    const { user, setUser } = useAuth();
+    const { user, dispatch } = useAuth();
 
     const login = () => {
-        setUser({
-            name: 'Fatih',
-            id: 1
+        dispatch({
+            type: 'LOGIN',
+            payload: {
+                user: 'Fatih',
+                id: 1
+            }
         })
     }
 
     const logout = () => {
-        setUser(false)
+        dispatch({
+            type: 'LOGOUT'
+        })
     }
 
     return(
