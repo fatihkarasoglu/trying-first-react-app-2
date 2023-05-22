@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 
-export default function Blog404() {
+export default function Page404() {
 
     return(
         <div>
