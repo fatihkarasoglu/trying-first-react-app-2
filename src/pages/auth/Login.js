@@ -1,10 +1,11 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 import { useAuth } from "../../context/AuthContext"
 
 export default function Login() {
 
     const navigate = useNavigate();
+    const location = useLocation();
 
     const { setUser } = useAuth();
 
@@ -13,7 +14,10 @@ export default function Login() {
             id: 1,
             userName: 'Fatih'
         })
-        navigate('/')
+        navigate(location?.state?.return_url || '/', {
+            replace: true,
+            state: 'fatih'
+        })
     }
 
     return(
