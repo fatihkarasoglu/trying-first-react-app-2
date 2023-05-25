@@ -15,40 +15,49 @@ import HomeLayout from './pages/HomeLayout';
 const routes = [
     {
         path: '/',
+        name: 'Home',
         element: <HomeLayout />,
         children: [
             {
+                name: 'index',
                 index: true,
                 element: <Home />
             },
             {
+                name: 'Contact',
                 path: 'Contact',
                 element: <Contact />
             },
             {
+                name: 'Blog',
                 path: 'blog',
                 element: <BlogLayout />,
                 auth: true,
                 children: [
                     {
+                        name: 'index',
                         index: true,
                         element: <Blog />
                     },
                     {
+                        name: 'categories',
                         path: 'categories',
                         element: <Categories />
                     },
                     {
+                        name: 'post',
                         path: 'post/:id/:url',
                         element: <Post />
                     },
                     {
+                        name: 'notFound',
                         path: '*',
                         element: <Blog404 />
                     }
                 ]
             },
             {
+                name: 'profile',
                 path: 'profile',
                 element: <Profile />,
                 auth: true
@@ -56,16 +65,19 @@ const routes = [
         ]
     },
     {
+        name: 'auth',
         path: '/auth',
         element: <AuthLayout />,
         children: [
             {
+                name: 'login',
                 path: 'login',
                 element: <Login />
             }
         ]
     },
     {
+        name: 'notFound',
         path: '*',
         element: <Page404 />
     }
