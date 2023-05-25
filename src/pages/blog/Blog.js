@@ -1,7 +1,12 @@
+import { Helmet } from "react-helmet"
+
 export default function Blog() {
 
     return(
         <div>
+            <Helmet>
+                Blog
+            </Helmet>
             Blog page
 
             <ul>
