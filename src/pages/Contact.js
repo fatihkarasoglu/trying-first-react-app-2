@@ -1,5 +1,8 @@
-import { Formik, Form, Field } from "formik"
-import { Helmet } from "react-helmet"
+import { Formik, Form, Field } from "formik";
+import { Helmet } from "react-helmet";
+
+import Input from "../components/form/input";
+import File from "../components/form/File";
 
 export default function Contact() {
 
@@ -15,7 +18,7 @@ export default function Contact() {
                     name: 'Fatih',
                     accept: false,
                     about: '',
-                    gender: '',
+                    gender: 1,
                     skills: [],
                     avatar: ''
                 }} 
@@ -23,8 +26,8 @@ export default function Contact() {
                     console.log(values);
                 }}>
                 {({ values }) => (
-                    <Form>
-                        <Field name="name" /> <br />
+                    <Form className="p-6">
+                        <Input label="Ad-soyad" name="name" /> <br />
                         <Field component="textarea" name="about" /> <br />
                         <label>
                             <Field type="checkbox" name="accept" />
@@ -40,7 +43,7 @@ export default function Contact() {
                             <option value="Vue.js">Vue.js</option>
                             <option value="Javascript">Javascript</option>
                         </Field>
-                        <Field type="file" name="avatar" />
+                        <File label="Avatar" name="avatar" />
                         <button disabled={!values.accept} type="submit">Gönder</button>
                     </Form>
                 )}
