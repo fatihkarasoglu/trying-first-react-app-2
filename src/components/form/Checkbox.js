@@ -8,7 +8,7 @@ export default function Checkbox({ label, ...props}) {
 
     return(
         <label className="flex gap-x-2 text-sm cursor-pointer items-center">
-            <button onClick={() => {
+            <button type="button" onClick={() => {
                 helpers.setValue(!field.value)
             }} className={classNames({
                 "w-5 h-5 rounded border flex items-center justify-center": true,
