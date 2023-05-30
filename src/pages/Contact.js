@@ -3,6 +3,8 @@ import { Helmet } from "react-helmet";
 
 import Input from "../components/form/input";
 import File from "../components/form/File";
+import Checkbox from "../components/form/Checkbox";
+import Textarea from "../components/form/Textarea";
 
 export default function Contact() {
 
@@ -28,11 +30,8 @@ export default function Contact() {
                 {({ values }) => (
                     <Form className="p-6">
                         <Input label="Ad-soyad" name="name" /> <br />
-                        <Field component="textarea" name="about" /> <br />
-                        <label>
-                            <Field type="checkbox" name="accept" />
-                            Kuralları kabul ediyorum.
-                        </label> <br />
+                        <Textarea label="Hakkında" rows={4} name="about" /> <br />
+                        <Checkbox label="Kuralları kabul ediyorum!" name="accept" />
                         <Field component="select" name="gender">
                             <option value={1}>Kadın</option>
                             <option value={2}>Erkek</option>
