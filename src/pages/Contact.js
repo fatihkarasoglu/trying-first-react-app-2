@@ -33,7 +33,7 @@ export default function Contact() {
                         <Input label="Ad-soyad" name="name" /> <br />
                         <Textarea label="Hakkında" rows={4} name="about" /> <br />
                         <Checkbox label="Kuralları kabul ediyorum!" name="accept" />
-                        <Select label="Cinsiyet" name="gender" options={[
+                        <Select label="Cinsiyet" name="gender" original={true} options={[
                             {key: 1, value: 'Kadın'},
                             {key: 2, value: 'Erkek'}
                         ]} />
