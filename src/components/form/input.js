@@ -1,4 +1,5 @@
-import { useField } from "formik";
+import classNames from "classnames";
+import { ErrorMessage, useField } from "formik";
 
 export default function Input({ label, ...props }) {
 
@@ -7,7 +8,12 @@ export default function Input({ label, ...props }) {
     return(
         <label className="block w-full">
             <div className="text-m text-gray-600"> { label } </div>
-            <input className="w-full h-10 border-b outline-none focus:border-black" {...props} {...field} />
+            <input className={classNames({
+                "w-full h-10 border-b outline-none": true,
+                "focus:border-black": !meta.error,
+                "border-red-600": meta.error
+            })} {...props} {...field} />
+            <ErrorMessage name={field.name} component="small" className="text-sm block mt-2 text-red-600" />
         </label>
     )
 }

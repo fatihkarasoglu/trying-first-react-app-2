@@ -1,5 +1,6 @@
-import { Formik, Form, Field } from "formik";
+import { Formik, Form, Field, useFormikContext } from "formik";
 import { Helmet } from "react-helmet";
+import { useEffect } from "react";
 
 import Input from "../components/form/input";
 import File from "../components/form/File";
@@ -7,6 +8,20 @@ import Checkbox from "../components/form/Checkbox";
 import Textarea from "../components/form/Textarea";
 import Select from "../components/form/Select";
 import Radio from "../components/form/Radio";
+import { SampleSchema } from "../validations/SampleSchema";
+
+const AutoSubmitCode = () => {
+
+    const { values, submitForm } = useFormikContext();
+
+    useEffect(() => {
+        if(values.code.length === 6) {
+            submitForm()
+        }
+    }, [values, submitForm])
+
+    return null
+}
 
 export default function Contact() {
 
@@ -16,6 +31,24 @@ export default function Contact() {
                 <title>İletişim</title>
             </Helmet>
             <h3>İletişim</h3> <br />
+
+            <Formik 
+                initialValues={{
+                    code: ''
+                }}
+                onSubmit={values => {
+                    console.log(values)
+                }}
+                validationSchema={SampleSchema}>
+                
+                {({ values }) => (
+                    <Form>
+                        <Input label="Kodu girin" name="code" />
+                        <button type="submit">Gönder</button>
+                        <AutoSubmitCode />
+                    </Form>
+                )}
+            </Formik>
 
             <Formik 
                 initialValues={{
@@ -31,7 +64,7 @@ export default function Contact() {
                     console.log(values);
                 }}>
                 {({ values }) => (
-                    <Form className="p-6 m-4 shadow-lg grid gap-y-4 border rounded">
+                    <Form className="p-6 m-4 hidden shadow-lg grid gap-y-4 border rounded">
                         <Input label="Ad-soyad" name="name" /> <br />
                         <Textarea label="Hakkında" rows={4} name="about" /> <br />
                         <Checkbox label="Kuralları kabul ediyorum!" name="accept" />
