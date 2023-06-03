@@ -9,6 +9,7 @@ import Textarea from "../components/form/Textarea";
 import Select from "../components/form/Select";
 import Radio from "../components/form/Radio";
 import { SampleSchema } from "../validations/SampleSchema";
+import { ContactSchema } from "../validations/ContactSchema";
 
 const AutoSubmitCode = () => {
 
@@ -30,7 +31,7 @@ export default function Contact() {
             <Helmet>
                 <title>İletişim</title>
             </Helmet>
-            <h3>İletişim</h3> <br />
+            <h3>İletişim</h3>
 
             <Formik 
                 initialValues={{
@@ -42,7 +43,7 @@ export default function Contact() {
                 validationSchema={SampleSchema}>
                 
                 {({ values }) => (
-                    <Form>
+                    <Form className="hidden">
                         <Input label="Kodu girin" name="code" />
                         <button type="submit">Gönder</button>
                         <AutoSubmitCode />
@@ -52,23 +53,25 @@ export default function Contact() {
 
             <Formik 
                 initialValues={{
-                    name: 'Fatih',
+                    name: '',
                     accept: false,
                     about: '',
-                    gender: 1,
+                    gender: '',
                     skills: [],
                     avatar: '',
                     level: 'mid'
                 }} 
                 onSubmit={values => {
                     console.log(values);
-                }}>
+                }}
+                validationSchema={ContactSchema}
+                >
                 {({ values }) => (
-                    <Form className="p-6 m-4 hidden shadow-lg grid gap-y-4 border rounded">
-                        <Input label="Ad-soyad" name="name" /> <br />
-                        <Textarea label="Hakkında" rows={4} name="about" /> <br />
+                    <Form className="p-6 m-4 shadow-lg grid gap-y-4 border rounded">
+                        <Input label="Ad-soyad" name="name" />
+                        <Textarea label="Hakkında" rows={4} name="about" />
                         <Checkbox label="Kuralları kabul ediyorum!" name="accept" />
-                        <Select label="Cinsiyet" name="gender" original={true} options={[
+                        <Select label="Cinsiyet" name="gender" options={[
                             {key: 1, value: 'Kadın'},
                             {key: 2, value: 'Erkek'}
                         ]} />
@@ -78,7 +81,7 @@ export default function Contact() {
                             <option value="Vue.js">Vue.js</option>
                             <option value="Javascript">Javascript</option>
                         </Field>
-                        <File label="Avatar" name="avatar" /> <br />
+                        <File label="Avatar" name="avatar" />
                         <Radio label="Seviyenizi seçin" name="level" options={[
                             {key: 'jr', value: 'JuniorDev'},
                             {key: 'mid', value: 'MidDev'},

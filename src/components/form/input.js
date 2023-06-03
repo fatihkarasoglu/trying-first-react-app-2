@@ -10,8 +10,8 @@ export default function Input({ label, ...props }) {
             <div className="text-m text-gray-600"> { label } </div>
             <input className={classNames({
                 "w-full h-10 border-b outline-none": true,
-                "focus:border-black": !meta.error,
-                "border-red-600": meta.error
+                "focus:border-black": !meta.error || !meta.touched,
+                "border-red-600": meta.error && meta.touched
             })} {...props} {...field} />
             <ErrorMessage name={field.name} component="small" className="text-sm block mt-2 text-red-600" />
         </label>
