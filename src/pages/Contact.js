@@ -59,7 +59,7 @@ export default function Contact() {
                     gender: '',
                     skills: [],
                     avatar: '',
-                    level: 'mid'
+                    level: ''
                 }} 
                 onSubmit={values => {
                     console.log(values);

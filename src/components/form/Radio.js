@@ -1,4 +1,4 @@
-import { useField } from "formik";
+import { useField, ErrorMessage } from "formik";
 import classNames from "classnames";
 
 export default function Radio({ label, options, ...props}) {
@@ -23,5 +23,6 @@ export default function Radio({ label, options, ...props}) {
                         </label>
                     ))
                 }
+                <ErrorMessage name={field.name} component="small" className="text-sm block mt-2 text-red-600" />
             </div>
 }

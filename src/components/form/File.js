@@ -1,4 +1,4 @@
-import { useField } from "formik";
+import { useField, ErrorMessage } from "formik";
 import { FiCheck } from "react-icons/fi"
 
 export default function File({ label, ...props}) {
@@ -23,6 +23,7 @@ export default function File({ label, ...props}) {
                 {!field.value && 'Dosya Seç'}
             </button>
             {field.value && <button onClick={() => helpers.setValue('')} className="flex w-full text-m underline-text-gray-600 mt-2">Dosyayı Kaldır</button>}
+            <ErrorMessage name={field.name} component="small" className="text-sm block mt-2 text-red-600" />
         </div>
     )
 }
