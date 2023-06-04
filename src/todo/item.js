@@ -1,11 +1,18 @@
-export default function TodoItem({ setTodos, todo, user }) {
+import { useDispatch } from "react-redux"
+import { deleteTodo } from "../stores/todo"
 
+export default function TodoItem({ setModal, todo, user }) {
+
+    const dispatch = useDispatch()
     const deleteHandle = () => {
-        setTodos(todos => todos.filter(t => t.id !== todo.id))
+        dispatch(deleteTodo(todo.id))
     }
 
     const editHandle = () => {
-
+        setModal({
+            name: 'edit-todo',
+            data: todo
+        })
     }
 
     return(
