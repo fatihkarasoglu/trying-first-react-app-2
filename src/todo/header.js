@@ -1,15 +1,22 @@
-export default function Header({ user, setUser }) {
+import { useSelector, useDispatch } from "react-redux"
+
+import { setUser } from "../stores/auth"
+
+export default function Header() {
+
+    const dispatch = useDispatch()
+    const { user } = useSelector(state => state.auth.user)
 
     const loginHandle = user => {
-        setUser(user)
+        dispatch(setUser(user))
     }
 
     const logoutHandle = () => {
-        setUser(false)
+        dispatch(setUser(false))
     }
 
     return(
-        <header className="header">
+        <header>
             <h2>Logo</h2>
             {!user && (
                 <nav>
@@ -20,7 +27,7 @@ export default function Header({ user, setUser }) {
             {user && (
                 <nav>
                     Hoşgeldin, {user.username}
-                    <button onClick={logoutHandle}>Çıkış Yap</button>
+                    <button onClick={logoutHandle()}>Çıkış Yap</button>
                 </nav>
             )}
         </header>

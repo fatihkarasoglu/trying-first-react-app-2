@@ -7,7 +7,6 @@ import Modal from "./todo/modal";
 
 function App() {
 
-  const [user, setUser] = useState(false);
   const [language, setLanguage] = useState('TR');
   const [dark, setDark] = useState(true);
   const [modal, setModal] = useState(false)
@@ -17,9 +16,9 @@ function App() {
   return(
     <main>
       {modal && <Modal close={close} name={modal.name} data={modal.data} />}
-      <Header user={user} setUser={setUser} />
-      <AddTodo user={user} />
-      <TodoList setModal={setModal} user={user} />
+      <Header />
+      <AddTodo />
+      <TodoList setModal={setModal} />
     </main>
   )
 }
