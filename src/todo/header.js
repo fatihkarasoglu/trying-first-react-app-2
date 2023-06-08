@@ -5,7 +5,7 @@ import { setUser } from "../stores/auth"
 export default function Header() {
 
     const dispatch = useDispatch()
-    const { user } = useSelector(state => state.auth.user)
+    const { user } = useSelector(state => state.auth)
 
     const loginHandle = user => {
         dispatch(setUser(user))
@@ -27,7 +27,7 @@ export default function Header() {
             {user && (
                 <nav>
                     Hoşgeldin, {user.username}
-                    <button onClick={logoutHandle()}>Çıkış Yap</button>
+                    <button onClick={logoutHandle}>Çıkış Yap</button>
                 </nav>
             )}
         </header>

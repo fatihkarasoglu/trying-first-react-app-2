@@ -1,7 +1,8 @@
 import { useDispatch, useSelector } from "react-redux"
 import { deleteTodo } from "../stores/todo"
+import { openModal } from "../stores/modal"
 
-export default function TodoItem({ setModal, todo }) {
+export default function TodoItem({ todo }) {
 
     const dispatch = useDispatch()
     const { user } = useSelector(state => state.auth)
@@ -11,10 +12,10 @@ export default function TodoItem({ setModal, todo }) {
     }
 
     const editHandle = () => {
-        setModal({
+        dispatch(openModal({
             name: 'edit-todo',
             data: todo
-        })
+        }))
     }
 
     return(
